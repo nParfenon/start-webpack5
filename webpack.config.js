@@ -7,6 +7,7 @@ const devtool = isDevelopment ? 'source-map' : undefined;
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const PostcssPresetEnv = require("postcss-preset-env");
 const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
@@ -40,6 +41,12 @@ module.exports = {
         filename: 'bundle[contenthash].js',
         clean: true,
     },
+    optimization: {
+        minimizer: [
+            new TerserPlugin(),
+            new CssMinimizerPlugin()
+        ]
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, PATHS.entry.main, 'index.html')
@@ -62,11 +69,6 @@ module.exports = {
             }
         ])
     ],
-    optimization: {
-        minimizer: [
-            new CssMinimizerPlugin(),
-        ]
-    },
     module: {
         rules: [
             {
