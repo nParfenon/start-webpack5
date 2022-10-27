@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:dev": "set NODE_ENV=development&&webpack",
-    "build:prod": "set NODE_ENV=production&&webpack"
+    "build:dev": "cross-env NODE_ENV=development webpack",
+    "build:prod": "cross-env NODE_ENV=production webpack"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,7 @@
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.19.4",
     "babel-loader": "^8.2.5",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.2.2",
     "html-webpack-plugin": "^5.5.0",
